@@ -38,15 +38,15 @@ jobs:
       script:
       - cd Chapter04
       - docker-compose build server
-      - docker tag thoughts_server:latest jaimebuelta/thoughts-backend:$GIT_SHA
-      - docker push jaimebuelta/thoughts-backend:$GIT_SHA
-      - docker tag thoughts_server:latest jaimebuelta/thoughts-backend:$TRAVIS_BRANCH
+      - docker tag thoughts_server:latest vanpan456/thoughts_server:$GIT_SHA
+      - docker push vanpan456/thoughts_server:$GIT_SHA
+      - docker tag thoughts_server:latest vanpan456/thoughts_server:$TRAVIS_BRANCH
       deploy:
       - provider: script
-        script: docker push jaimebuelta/thoughts-backend:$TRAVIS_BRANCH
+        script: docker push vanpan456/thoughts_server:$TRAVIS_BRANCH
         on:
           branch: master        
       - provider: script
-        script: docker push jaimebuelta/thoughts-backend:$TRAVIS_TAG
+        script: docker push vanpan456/thoughts_server:$TRAVIS_TAG
         on:
           tags: True
